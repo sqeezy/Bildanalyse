@@ -29,6 +29,10 @@ public class ImageViewer {
         menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new GreenFilter(),"Gruenstufen",KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK),'e')));
         menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new BlueFilter(),"Blaustufen",KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_DOWN_MASK),'u')));
         menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new AverageLowPassFilter(9),"AvgLowPass",KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK),'l')));
+
+        int[][] filter = new int[][]{{-1,-1,-1},{-1,9,-1},{-1,-1,-1}};
+        menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new CustomGridFilter(filter),"CustomGridFilter",KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK),'c')));
+
         menu2.add(new JMenuItem(new HistoAction(imageComponent)));
 
         menuBar.add(menu2);

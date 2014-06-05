@@ -9,18 +9,18 @@ import java.awt.image.BufferedImage;
  * Created by sqeezy on 05.06.14.
  */
 public class AverageLowPassFilter implements IImageFilter {
-    private final int _rasterSize;
+    private final int _gridSize;
 
-    public AverageLowPassFilter(int rasterSize) {
-        _rasterSize = rasterSize;
+    public AverageLowPassFilter(int gridSize) {
+        _gridSize = gridSize;
     }
 
     @Override
     public void filter(BufferedImage image) {
         BufferedImage copyImage = ImageComponent.copyImage(image);
 
-        for (int x = _rasterSize / 2; x < image.getWidth() - _rasterSize / 2; x++) {
-            for (int y = _rasterSize / 2; y < image.getHeight() - _rasterSize / 2; y++) {
+        for (int x = _gridSize / 2; x < image.getWidth() - _gridSize / 2; x++) {
+            for (int y = _gridSize / 2; y < image.getHeight() - _gridSize / 2; y++) {
                 Color avgColor = getAverageColor(copyImage, x, y);
                 image.setRGB(x,y,avgColor.getRGB());
             }
@@ -33,8 +33,8 @@ public class AverageLowPassFilter implements IImageFilter {
         int green = 0;
         int blue = 0;
 
-        for (int i = x - _rasterSize / 2; i <= x + _rasterSize / 2; i++) {
-            for (int j = y - _rasterSize / 2; j <= y + _rasterSize / 2; j++) {
+        for (int i = x - _gridSize / 2; i <= x + _gridSize / 2; i++) {
+            for (int j = y - _gridSize / 2; j <= y + _gridSize / 2; j++) {
                 Color curColor = new Color(image.getRGB(i, j));
                 red += curColor.getRed();
                 green += curColor.getGreen();
