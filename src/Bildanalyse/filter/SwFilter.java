@@ -1,12 +1,12 @@
 package Bildanalyse.filter;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.Color;
 
 /**
  * Created by sqeezy on 05.06.14.
  */
-public class SwFilter implements IImageFilter{
+public class SwFilter implements IImageFilter {
     @Override
     public void filter(BufferedImage image) {
 

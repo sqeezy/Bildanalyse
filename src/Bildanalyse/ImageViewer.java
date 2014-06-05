@@ -28,6 +28,7 @@ public class ImageViewer {
         menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new RedFilter(),"Rotstufen",KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK),'r')));
         menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new GreenFilter(),"Gruenstufen",KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK),'e')));
         menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new BlueFilter(),"Blaustufen",KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_DOWN_MASK),'u')));
+        menu2.add(new JMenuItem(new AnyFilterAction(imageComponent,new AverageLowPassFilter(9),"AvgLowPass",KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK),'l')));
         menu2.add(new JMenuItem(new HistoAction(imageComponent)));
 
         menuBar.add(menu2);
