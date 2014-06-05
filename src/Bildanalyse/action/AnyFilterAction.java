@@ -1,9 +1,13 @@
+package Bildanalyse.action;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
+import Bildanalyse.*;
+import Bildanalyse.filter.IImageFilter;
 
 
-class AnyFilterAction extends AbstractAction {
+public class AnyFilterAction extends AbstractAction {
     private final ImageComponent viewComponent;
     private IImageFilter _filter;
 

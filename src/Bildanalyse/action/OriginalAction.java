@@ -1,10 +1,14 @@
+package Bildanalyse.action;
+
+import Bildanalyse.ImageComponent;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 
-class OriginalAction extends AbstractAction {
+public class OriginalAction extends AbstractAction {
     private final ImageComponent viewComponent;
 
 

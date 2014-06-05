@@ -1,3 +1,5 @@
+package Bildanalyse.filter;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

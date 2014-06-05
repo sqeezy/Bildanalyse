@@ -1,12 +1,15 @@
-import java.awt.*;
+package Bildanalyse.filter;
+
 import java.awt.image.BufferedImage;
+import java.awt.Color;
 
 /**
  * Created by sqeezy on 05.06.14.
  */
-public class GreyFilter implements IImageFilter {
+public class SwFilter implements IImageFilter{
     @Override
     public void filter(BufferedImage image) {
+
         int hoehe = image.getHeight();
         int breite = image.getWidth();
 
@@ -15,9 +18,16 @@ public class GreyFilter implements IImageFilter {
                 int rgb = image.getRGB(b, h);
                 Color c = new Color(rgb);
                 int grauwert = (c.getRed() + c.getGreen() + c.getBlue()) / 3;
-                Color newC = new Color(grauwert, grauwert, grauwert);
+                Color newC;
+                if (grauwert > 150) {
+                    newC = new Color(255, 255, 255);
+                } else {
+                    newC = new Color(0, 0, 0);
+                }
                 image.setRGB(b, h, newC.getRGB());
             }
+
+
         }
     }
 }

@@ -1,3 +1,7 @@
+package Bildanalyse.action;
+
+import Bildanalyse.ImageComponent;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -9,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-class FileOpenAction extends AbstractAction {
+public class FileOpenAction extends AbstractAction {
     private final ImageComponent viewComponent;
 
     public FileOpenAction(ImageComponent viewComponent) {

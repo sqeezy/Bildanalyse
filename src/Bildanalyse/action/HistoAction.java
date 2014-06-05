@@ -1,10 +1,14 @@
+package Bildanalyse.action;
+
+import Bildanalyse.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 
-class HistoAction extends AbstractAction {
+public class HistoAction extends AbstractAction {
     private final ImageComponent viewComponent;
 
 

@@ -1,9 +1,11 @@
+package Bildanalyse;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-class ImageComponent extends JComponent {
+public class ImageComponent extends JComponent {
     private static final long serialVersionUID = 8055865896136562197L;
 
     private BufferedImage image;
