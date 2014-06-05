@@ -1,8 +1,9 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by sqeezy on 05.06.14.
  */
 interface IImageFilter {
-    void filter(Image img);
+    void filter(BufferedImage image);
 }
