@@ -48,6 +48,6 @@ public class AverageLowPassFilter implements IImageFilter {
         blue/=countPixel;
         green/=countPixel;
 
-        return new Color(red,blue,green);
+        return new Color(red,green,blue);
     }
 }

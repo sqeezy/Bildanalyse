@@ -53,7 +53,7 @@ public class CustomGridFilter implements IImageFilter {
         green = between(0,green,255);
         blue = between(0,blue,255);
 
-        return new Color(red,blue,green);
+        return new Color(red,green,blue);
     }
 
     private int between(int min, int orig, int max) {
