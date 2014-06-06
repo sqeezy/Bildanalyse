@@ -9,9 +9,19 @@ import Bildanalyse.filter.IImageFilter;
 
 public class AnyFilterAction extends AbstractAction {
     private final ImageComponent viewComponent;
-    private IImageFilter _filter;
+    private IImageFilter[] _filter;
 
     public AnyFilterAction(ImageComponent viewComponent, IImageFilter filter, String menueName, KeyStroke key, char menueKey) {
+        this.viewComponent = viewComponent;
+
+        _filter = new IImageFilter[]{filter};
+
+        putValue(NAME, menueName);
+        putValue(ACCELERATOR_KEY, key);
+        putValue(MNEMONIC_KEY, (int) menueKey);
+    }
+
+    public AnyFilterAction(ImageComponent viewComponent, String menueName, KeyStroke key, char menueKey,IImageFilter... filter) {
         this.viewComponent = viewComponent;
 
         _filter = filter;
@@ -25,7 +35,10 @@ public class AnyFilterAction extends AbstractAction {
         viewComponent.setWorkingImage();
         BufferedImage image = this.viewComponent.getImage();
 
-        _filter.filter(image);
+        for(IImageFilter fil: _filter){
+            fil.filter(image);
+        }
+
 
         viewComponent.repaint();
     }

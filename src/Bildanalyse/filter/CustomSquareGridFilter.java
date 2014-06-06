@@ -6,50 +6,47 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by sqeezy on 06.06.14.
+ * Created by sqeezy on 05.06.14.
  */
-public class CustomGridFilter implements IImageFilter {
+public class CustomSquareGridFilter implements IImageFilter {
     private final int[][] _grid;
-    private final int _halfGridWidth;
-    private final int _halfGridHeight;
+    private final int _halfLength;
     private final double _factor;
 
-    public CustomGridFilter(int[][] grid){
+    public CustomSquareGridFilter(int[][] grid){
         this(grid,1.0);
     }
 
-    public CustomGridFilter(int[][] grid,double factor){
-        if(grid.length<1 || grid[0].length<1){
-            throw new IllegalArgumentException("The size of rows and columns has to be greater then zero.");
+    public CustomSquareGridFilter(int[][] grid,double factor){
+        if(grid.length!=grid[0].length || grid.length%2!=1){
+            throw new IllegalArgumentException("Grid has to be square and odd in size.");
         }
         _grid = grid;
-        _halfGridWidth = grid.length/2;
-        _halfGridHeight = grid[0].length/2;
+        _halfLength = _grid.length/2;
         _factor = factor;
     }
+
     @Override
     public void filter(BufferedImage image) {
         BufferedImage imageCopy = ImageComponent.copyImage(image);
-        for(int i= _halfGridWidth;i<image.getWidth()- _halfGridWidth;i++){
-            for(int j= _halfGridHeight;j<image.getHeight()- _halfGridHeight;j++){
+        for(int i= _halfLength;i<image.getWidth()- _halfLength;i++){
+            for(int j= _halfLength;j<image.getHeight()- _halfLength;j++){
                 Color newCol = getNewColor(imageCopy,i,j);
                 image.setRGB(i,j,newCol.getRGB());
             }
         }
-
     }
 
     private Color getNewColor(BufferedImage image, int w, int h) {
-        int weightiningSum = 0;
         int red = 0;
         int blue = 0;
         int green = 0;
 
-        int xStart = w- _halfGridWidth;
-        int yStart = h- _halfGridHeight;
+        int xStart = w-_halfLength;
+        int yStart = h-_halfLength;
 
         for(int x = 0;x<_grid.length;x++){
-            for(int y = 0;y<_grid[0].length;y++){
+            for(int y = 0;y<_grid.length;y++){
                 Color curColor = new Color(image.getRGB(xStart+x,yStart+y));
                 red += curColor.getRed()*_grid[x][y];
                 green += curColor.getGreen()*_grid[x][y];
