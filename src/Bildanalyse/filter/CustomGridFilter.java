@@ -1,5 +1,7 @@
 package Bildanalyse.filter;
 
+import Bildanalyse.ImageComponent;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -20,9 +22,11 @@ public class CustomGridFilter implements IImageFilter {
 
     @Override
     public void filter(BufferedImage image) {
+        BufferedImage imageCopy = ImageComponent.copyImage(image);
         for(int i= _halfLength;i<image.getWidth()- _halfLength;i++){
             for(int j= _halfLength;j<image.getHeight()- _halfLength;j++){
-                Color newCol = getNewColor(image,i,j);
+                Color newCol = getNewColor(imageCopy,i,j);
+                image.setRGB(i,j,newCol.getRGB());
             }
         }
     }
